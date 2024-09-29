@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Management Integration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+    <div class="container" id="screen0">
+        <div class="header">Zomato</div>
+        <div class="label">Select Food Items and Quantity</div>
+        <div class="food-item">
+            <label for="pizza">Pizza (Rs. 200 each)</label>
+            <input type="number" id="pizza" name="pizza" min="0" value="0">
+        </div>
+        <div class="food-item">
+            <label for="burger">Burger (Rs. 100 each)</label>
+            <input type="number" id="burger" name="burger" min="0" value="0">
+        </div>
+        <div class="food-item">
+            <label for="pasta">Pasta (Rs. 150 each)</label>
+            <input type="number" id="pasta" name="pasta" min="0" value="0">
+        </div>
+        <button class="submit-btn" onclick="calculateBill()">Check Out</button>
+    </div>
+    
+    <div class="container" id="screen1" style="display: none;">
+        <div class="label">Your Bill</div>
+        <div id="bill-info"></div>
+        <div class="label">Do you want to give e-waste?</div>
+        <div class="checkbox-group">
+            <label for="yes">
+                <input type="checkbox" id="yes" name="e-waste" value="yes" onclick="toggleCheckbox('yes')"> Yes
+            </label>
+            <label for="no">
+                <input type="checkbox" id="no" name="e-waste" value="no" onclick="toggleCheckbox('no')"> No
+            </label>
+        </div>
+        <button class="submit-btn" onclick="showEwasteForm()">Submit</button>
+    </div>
+    
+    <div class="container" id="screen2" style="display: none;">
+        <div class="label">Select E-Waste Items and Quantity</div>
+        <div class="e-waste-item">
+            <label for="mobile-battery">Mobile Battery (Rs. 15 each)</label>
+            <input type="number" id="mobile-battery" name="mobile-battery" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="remote">Remote (Rs. 5 each)</label>
+            <input type="number" id="remote" name="remote" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="bulb">Bulb (Rs. 4 each)</label>
+            <input type="number" id="bulb" name="bulb" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="wire">Wire (1 meter = Rs. 5 each)</label>
+            <input type="number" id="wire" name="wire" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="toys">Electronic Toys (Rs. 4 each)</label>
+            <input type="number" id="toys" name="toys" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="charger">Charger (Rs. 5 each)</label>
+            <input type="number" id="charger" name="charger" min="0" max="10" value="0">
+        </div>
+        <div class="e-waste-item">
+            <label for="small-e-items">Small e-items (Chips and all) (Rs. 3 each)</label>
+            <input type="number" id="small-e-items" name="small-e-items" min="0" max="10" value="0">
+        </div>
+        <button class="submit-btn" onclick="calculateDiscount()">Submit</button>
+    </div>
+
+    <div class="container" id="screen3" style="display: none;">
+        <div class="label">Discount Information</div>
+        <div id="discount-info"></div>
+        <div class="label">Do you want to continue with this discount?</div>
+        <div class="checkbox-group">
+            <label for="continue-yes">
+                <input type="checkbox" id="continue-yes" name="continue-discount" value="yes" onclick="toggleContinueCheckbox('continue-yes')"> Yes
+            </label>
+            <label for="continue-no">
+                <input type="checkbox" id="continue-no" name="continue-discount" value="no" onclick="toggleContinueCheckbox('continue-no')"> No
+            </label>
+        </div>
+        <button class="submit-btn" onclick="handleDiscountChoice()">Submit</button>
+    </div>
+
+    <div class="container" id="screen4" style="display: none;">
+        <div class="label">Thank you for contributing to Mother Earth</div>
+        <div id="final-bill-with-discount"></div>
+        <button class="submit-btn" onclick="generateCertificate()">Get Certificate</button>
+    </div>
+
+    <div class="container" id="screen5" style="display: none;">
+        <div class="label">Final Bill</div>
+        <div id="final-bill-no-discount"></div>
+    </div>
+
+    <div class="container1" id="screen6" style="display: none;">
+        
+        <div class="label1" id="certificate"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
